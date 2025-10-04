@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFlow Agency - Automate. Create. Grow.</title>
+    
+    <!-- Google Fonts: Poppins - Optimized Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    
+    <!-- Font Awesome for Icons (Optimized for faster loading) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+    <!-- CSS STYLES ARE INCLUDED HERE -->
+    <style>
+        /* --- Global Styles & Variables --- */
+        :root {
+            --bg-dark: #0a0f1f; /* Deeper navy blue */
+            --bg-card: #111930;
+            --primary-gradient: linear-gradient(90deg, #007CF0, #00DFD8);
+            --primary-color-1: #007CF0;
+            --primary-color-2: #00DFD8;
+            --text-light: #f8fafc;
+            --text-muted: #a0aec0;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--primary-color-2);
+            font-weight: 500;
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 7rem 0;
+            position: relative;
+        }
+
+        /* --- Header & Navbar --- */
+        #header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        #header.scrolled {
+            background-color: rgba(10, 15, 31, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .text-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .text-logo span {
+            color: var(--primary-color-2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-gradient);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color-2);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            min-height: 150px; /* Reserve space for typing text */
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--primary-gradient);
+            color: var(--bg-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 223, 216, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 223, 216, 0.4);
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-light);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+
+        /* --- About Section --- */
+        .founder-card {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .founder-message {
+            width: 100%;
+            text-align: center;
+        }
+
+        .founder-message blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            border-left: 5px solid var(--primary-color-1);
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .founder-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-color-2);
+            text-align: right;
+        }
+
+        /* --- Why Choose Us Section --- */
+        .why-choose-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        .feature-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-color-1);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color-2);
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .feature-card p {
+            color: var(--text-muted);
+        }
+        
+        /* --- Our Process Section --- */
+        .process-timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 5%;
+            width: 90%;
+            height: 2px;
+            background: var(--glass-border);
+        }
+        .process-step {
+            text-align: center;
+            width: 22%;
+        }
+        .process-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-dark);
+            border: 2px solid var(--primary-color-2);
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--primary-color-2);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .process-step h3 {
+            margin-bottom: 0.5rem;
+        }
+        .process-step p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(0, 223, 216, 0.2), transparent 30%);
+            transform-origin: center;
+            animation: rotate 6s linear infinite;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-color-2);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+        }
+        
+        /* --- Portfolio Section --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            overflow: hidden;
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(10,15,31,0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-item:hover img { transform: scale(1.1); }
+        .portfolio-overlay h3 {
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+        .portfolio-item:hover .portfolio-overlay h3 { transform: translateY(0); }
+
+
+        /* --- Testimonials Section --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-color-2);
+        }
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        .author-info h4 { font-size: 1.1rem; }
+        .author-info p { color: var(--primary-color-1); }
+
+        /* --- FAQ Section --- */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--bg-card);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+        }
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 2rem;
+            color: var(--primary-color-2);
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-muted);
+        }
+
+
+        /* --- Contact Section --- */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-section p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 14px 30px;
+            text-decoration: none;
+            color: var(--text-light);
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: var(--primary-color-1);
+            border-color: var(--primary-color-1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 124, 240, 0.4);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            padding: 3rem 0;
+            text-align: center;
+            background: var(--bg-dark);
+            border-top: 1px solid var(--glass-border);
+            margin-top: 5rem;
+        }
+        .social-links {
+            margin-bottom: 1.5rem;
+        }
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--primary-color-2);
+        }
+        .footer p { color: var(--text-muted); }
+
+        /* --- Back to Top Button --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s, visibility 0.4s, transform 0.4s;
+            transform: translateY(20px);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* --- Animations --- */
+        .animate-on-load {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .animate-on-load.sub-text { animation-delay: 2.5s; }
+        .animate-on-load.cta { animation-delay: 2.8s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1024px) {
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(10, 15, 31, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { margin: 2rem 0; font-size: 1.5rem; }
+            .hamburger-menu { display: block; z-index: 1001; }
+            .hero-content h1 { font-size: 3rem; min-height: 120px; }
+            .founder-card { flex-direction: column; text-align: center; gap: 2rem; padding: 2.5rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            
+            .process-timeline::before { display: none; }
+            .process-step { width: 100%; margin-bottom: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <!-- Header & Navigation Bar -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="#hero" class="text-logo">Autoflow<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Clients</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1><span id="typed-text"></span></h1>
+                <p class="animate-on-load sub-text">We build powerful digital solutions that drive results through smart design, automation, and technology.</p>
+                <a href="#contact" class="cta-button animate-on-load cta">Get a Free Consultation</a>
+            </div>
+            <a href="#about" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- About Section (Founder Message) -->
+        <section id="about" class="about-section">
+            <div class="container reveal">
+                <h2 class="section-title">A Message from the Founder</h2>
+                <p class="section-subtitle">Our Vision and Mission</p>
+                <div class="founder-card">
+                    <div class="founder-message">
+                        <blockquote>
+                            “I’m Harshavardhan Ramgiri, Founder of AutoFlow Agency. I started this agency to empower brands with the digital tools they need to succeed. We help you grow through smart design, powerful automation, and cutting-edge technology.”
+                        </blockquote>
+                        <p class="founder-name">- Harshavardhan Ramgiri</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Why Choose Us Section -->
+        <section id="why-choose-us" class="why-choose-us-section">
+            <div class="container reveal">
+                <h2 class="section-title">Why Partner With Us?</h2>
+                <p class="section-subtitle">The AutoFlow Advantage</p>
+                <div class="why-choose-us-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Innovative Solutions</h3>
+                        <p>We leverage the latest technology to provide creative and effective solutions tailored to your unique needs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Client-Centric Approach</h3>
+                        <p>Your success is our priority. We work closely with you to understand your goals and deliver measurable results.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Proven Expertise</h3>
+                        <p>Our team has a track record of delivering high-quality projects that drive growth and enhance brand visibility.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Our Process Section -->
+        <section id="process" class="process-section">
+            <div class="container reveal">
+                <h2 class="section-title">Our Four-Step Process</h2>
+                <p class="section-subtitle">Clarity and Results, Every Step of the Way</p>
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="process-icon">1</div>
+                        <h3>Discover</h3>
+                        <p>We start by understanding your vision, goals, and target audience through in-depth consultation.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">2</div>
+                        <h3>Design</h3>
+                        <p>Our team creates intuitive and beautiful designs that reflect your brand and engage your users.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">3</div>
+                        <h3>Develop</h3>
+                        <p>We bring the designs to life with clean, efficient code and robust back-end solutions.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">4</div>
+                        <h3>Deploy</h3>
+                        <p>After rigorous testing, we launch your project and provide ongoing support to ensure success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="container reveal">
+                <h2 class="section-title">Our Core Services</h2>
+                <p class="section-subtitle">What We Do Best</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Creative Web Design</h3>
+                        <p>We craft beautiful, responsive, and user-centric websites that convert visitors into customers.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Business Automation</h3>
+                        <p>Streamline your workflows and increase efficiency with our custom automation solutions.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-palette"></i>
+                        <h3>Branding & Identity</h3>
+                        <p>Build a memorable brand with our strategic identity design, from logos to brand guides.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Performance Optimization</h3>
+                        <p>Boost your website's speed for a better user experience and higher SEO rankings.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio-section">
+            <div class="container reveal">
+                <h2 class="section-title">Our Recent Work</h2>
+                <p class="section-subtitle">A Glimpse of Our Creations</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://placehold.co/600x400/007CF0/FFFFFF?text=E-commerce+Platform" alt="Portfolio Project 1" loading="lazy" decoding="async">
+                        <div class="portfolio-overlay"><h3>E-commerce Platform</h3></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://placehold.co/600x400/00DFD8/0a0f1f?text=SaaS+Dashboard" alt="Portfolio Project 2" loading="lazy" decoding="async">
+                        <div class="portfolio-overlay"><h3>SaaS Dashboard</h3></div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://placehold.co/600x400/1E293B/FFFFFF?text=Corporate+Branding" alt="Portfolio Project 3" loading="lazy" decoding="async">
+                        <div class="portfolio-overlay"><h3>Corporate Branding</h3></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container reveal">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Success Stories</p>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"AutoFlow Agency transformed our online presence. Their design is clean, modern, and our user engagement has skyrocketed. A truly professional team."</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/100x100/1E293B/FFFFFF?text=PJ" alt="Client Avatar" loading="lazy" decoding="async">
+                            <div class="author-info">
+                                <h4>Priya Jain</h4>
+                                <p>Founder, Creative Minds</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The automation solution they built for us was a game-changer. It saved us countless hours and let us focus on what we do best. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/100x100/1E293B/FFFFFF?text=RK" alt="Client Avatar" loading="lazy" decoding="async">
+                            <div class="author-info">
+                                <h4>Rajesh Kumar</h4>
+                                <p>Operations Manager, Global Exports</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"From branding to the final website, the entire process was seamless. The team is responsive, talented, and delivered beyond our expectations."</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/100x100/1E293B/FFFFFF?text=SN" alt="Client Avatar" loading="lazy" decoding="async">
+                            <div class="author-info">
+                                <h4>Sneha Naik</h4>
+                                <p>Marketing Director, HealthCo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Have Questions? We Have Answers</p>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">What types of businesses do you work with?</button>
+                        <div class="faq-answer">
+                            <p>We work with a diverse range of clients, from startups and small businesses to established enterprises. Our solutions are scalable and tailored to meet the unique needs of each client, regardless of their industry.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How long does a typical website project take?</button>
+                        <div class="faq-answer">
+                            <p>A standard website project typically takes between 4 to 8 weeks from the initial discovery call to the final launch. However, the timeline can vary depending on the complexity of the project and the scope of work.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Do you provide ongoing support after the website is launched?</button>
+                        <div class="faq-answer">
+                            <p>Yes, we offer various support and maintenance packages to ensure your website remains secure, up-to-date, and performs optimally. We're committed to being your long-term technology partner.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container reveal">
+                <h2 class="section-title">Let's Build Something Great</h2>
+                <p>Ready to start your next project? We're here to help.</p>
+                <div class="contact-links">
+                    <a href="mailto:r.harsha0541@gmail.com" class="contact-button">
+                        <i class="fas fa-envelope"></i> r.harsha0541@gmail.com
+                    </a>
+                    <a href="tel:8555894143" class="contact-button">
+                        <i class="fas fa-phone"></i> +91 8555894143
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2025 AutoFlow Agency. All Rights Reserved. Designed with passion in Hyderabad.</p>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <a href="#hero" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    
+    <!-- Particle.js and Typed.js for animations -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+    
+    <!-- JAVASCRIPT IS INCLUDED HERE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Typed.js Initialization for Hero Headline ---
+            const initTyped = () => {
+                if (typeof Typed !== 'undefined') {
+                    new Typed('#typed-text', {
+                        strings: ['Automate. Create.', 'Grow with <span class="gradient-text">AutoFlow.</span>'],
+                        typeSpeed: 50,
+                        backSpeed: 30,
+                        backDelay: 1500,
+                        startDelay: 500,
+                        loop: false,
+                        showCursor: true,
+                        cursorChar: '|',
+                    });
+                }
+            };
+            
+            // --- Particle.js Initialization ---
+            const initParticles = () => {
+                 if (typeof particlesJS !== 'undefined') {
+                    particlesJS('particles-js', {
+                        "particles": { "number": { "value": 30, "density": { "enable": true, "value_area": 800 }}, "color": { "value": "#00DFD8" }, "shape": { "type": "circle" }, "opacity": { "value": 0.2, "random": true }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#007CF0", "opacity": 0.15, "width": 1 }, "move": { "enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }},
+                        "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.3 }}}},
+                        "retina_detect": true
+                    });
+                }
+            };
+
+            initTyped();
+            setTimeout(initParticles, 500); // Delay particle init slightly
+
+            // --- Sticky Navbar on Scroll ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }, { passive: true });
+
+            // --- Hamburger Menu for Mobile ---
+            const hamburger = document.querySelector('.hamburger-menu');
+            const navLinks = document.querySelector('.nav-links');
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // --- Scroll Reveal Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: "0px 0px -50px 0px" });
+            revealElements.forEach(element => { revealObserver.observe(element); });
+            
+            // --- Back to Top Button ---
+            const backToTopButton = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            }, { passive: true });
+
+            // --- FAQ Accordion ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = 0;
+                    });
+                    
+                    // Open the clicked item if it wasn't already active
+                    if (!isActive) {
+                        item.classList.add('active');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
